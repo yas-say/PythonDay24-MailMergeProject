@@ -12,14 +12,19 @@ with open('./Input/Names/invited_names.txt') as file1:
     names = file1.readlines()
     print(names)
 
-with open('./Input/Letters/starting_letter.txt') as file2:
-    sampleLetter = file2.readlines()
-    print(sampleLetter)
 
 
 for name in names:
+
+    sampleLetter=[]
     name_entry = name.strip("\n")
-    sampleLetter[0].replace('[name]', name_entry)
+    print(name_entry)
+
+    with open('./Input/Letters/starting_letter.txt') as file2:
+        sampleLetter = file2.readlines()
+        print(sampleLetter)
+    sampleLetter[0] = sampleLetter[0].replace("[name]", name_entry)
+
 
     for _ in sampleLetter:
         with open(f'./Output/ReadyToSend/letter_for_{name_entry}.txt', mode='a') as wfile:
